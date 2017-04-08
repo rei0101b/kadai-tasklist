@@ -1,0 +1,23 @@
+<h1>Todoリスト</h1>
+<% @tasks.each do |task| %>
+<table border = "1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>内容</th>
+            <th>担当者</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= task.id %></td>
+            <td><%= task.content %></td>
+            <td><%= task.person %></td>
+            <td><%= link_to "詳細", task %></td>
+            <td><%= link_to "編集", edit_task_path(task.id) %></td>
+            <td><%= link_to "削除", task, method: :delete %></td>
+        </tr>
+    </tbody>
+<% end %>
+</table>
+<%= link_to "新規タスクの作成", new_task_path %>

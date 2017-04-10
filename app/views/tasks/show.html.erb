@@ -1,5 +1,6 @@
 <h3> ID = <%= @task.id %>の詳細ページ</h3>
 <p>内容: <%= @task.content %></p>
+<p>ステータス: <%= @task.status %></p>
 <p>担当: <%= @task.person %></p>
 
 <%= link_to "このタスクを編集する", edit_task_path(@task) %>

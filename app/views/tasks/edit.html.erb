@@ -1,12 +1,4 @@
 <h3>ID: <%= @task.id %>の編集ページ</h3>
-<%= form_for(@task) do |f| %>
-<%= f.label :content, "タスク" %>:
-<%= f.text_field :content %>
-<%= f.label :status, "ステータス" %>:
-<%= f.select :status, ["予定", "実行中","完了","保留","問題"]%>
-<%= f.label :person, "担当者" %>:
-<%= f.select :person, ["父","母","兄","妹"] %>
-<%= f.submit "投稿" %>
-<% end %>
+<%= render "form", task: @task %>
 <%= link_to "詳細へ戻る", @task %>
 <%= link_to "一覧へ戻る", tasks_path %>

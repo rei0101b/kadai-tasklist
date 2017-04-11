@@ -1,25 +1,30 @@
 <h1>Todoリスト</h1>
-<% @tasks.each do |task| %>
-<table border = "1">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>内容</th>
-            <th>ステータス</th>
-            <th>担当者</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><%= task.id %></td>
-            <td><%= task.content %></td>
-            <td><%= task.status %></td>
-            <td><%= task.person %></td>
-            <td><%= link_to "詳細", task %></td>
-            <td><%= link_to "編集", edit_task_path(task.id) %></td>
-            <td><%= link_to "削除", task, method: :delete %></td>
-        </tr>
-    </tbody>
+<% if @tasks.any? %>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>内容</th>
+                <th>ステータス</th>
+                <th>担当者</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @tasks.each do |task| %>
+                <tr>
+                    <td><%= task.id %></td>
+                    <td><%= task.content %></td>
+                    <td><%= task.status %></td>
+                    <td><%= task.person %></td>
+                    <td><%= link_to "詳細", task %></td>
+                    <td><%= link_to "編集", edit_task_path(task.id) %></td>
+                    <td><%= link_to "削除", task, method: :delete %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <div>
+        <%= paginate @tasks %>
+    </div>
 <% end %>
-</table>
-<%= link_to "新規タスクの作成", new_task_path %>
+<%= link_to "新規タスクの作成", new_task_path, class: "btn btn-primary" %>
